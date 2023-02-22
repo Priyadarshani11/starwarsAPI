@@ -1,5 +1,7 @@
 starwarAPI
+
 PROJECT STRUCTURE
+
 starwarsAPI (project root directory)
 
   - task_one.py 
@@ -17,11 +19,13 @@ starwarsAPI (project root directory)
       - datamodels
           - __init__.py
           - films.py
-          - planets.py 
+          - planets.py gg
           - spacies.py
           - starships.py
           - vehicles.py
+          - 
 Project Creations STEPS
+
 Open Pycharm
 Open Project
 Choose desired directory for project (project destination)
@@ -29,6 +33,7 @@ Choose project name (project root directory)
 Go with default selections and click on "create" button
 Pycharm will automatically create 1 directory (venv), 1 file (main.py)
 Delete main.py file.
+
 NOTE -
 
 README.md is a file typically found under most Python projects.
@@ -88,7 +93,7 @@ DELETE
 NOTE - http methods are also called http verbs
 
 Install postman
-postman is a tool that allows us to send HTTP requests to web apis.
+postman is a tool that allows us to send HTTP requests to web apis.[]()
 Terminology
 source code :: code of the project/ library
 open source :: free to use and free to distribute (free is not in terms of cost but freedom)
@@ -132,4 +137,5 @@ PLURAL (https://swapi.dev/api/films)
 SINGULAR (https://swapi.dev/api/films/1)
 starships
 
-vehicles
+
+

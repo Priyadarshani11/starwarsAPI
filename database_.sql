@@ -96,7 +96,7 @@ CREATE TABLE `starship`(
     `cargo_capacity` VARCHAR(250) COLLATE 'utf8_unicode_ci',
     `consumables` VARCHAR(250) COLLATE 'utf8_unicode_ci',
     `cost_in_credits` VARCHAR(250) COLLATE 'utf8_unicode_ci',
-    `crew` INT(11),
+    `crew` VARCHAR(250),
     `hyperdrive_rating` INT(11),
     `length` VARCHAR(250) COLLATE 'utf8_unicode_ci',
     `manufacturer` VARCHAR(250) COLLATE 'utf8_unicode_ci',

@@ -22,6 +22,7 @@ from utils.timing import timeit
 from utils.randgen import ProduceChars
 
 
+
 def generate_random_numbers(n: int=15) -> list:
     """produces n random numbers (default 15)"""
 
@@ -39,7 +40,7 @@ def get_url(resource:str, resource_id:int) -> str:
     Args:
         resource_id:
 
-    Returns:
+    Returns: absolute_url
 
     """
     home_url = "https://swapi.dev"
@@ -51,10 +52,10 @@ def get_url(resource:str, resource_id:int) -> str:
 def main():
 
     parser = argparse.ArgumentParser(
-        prog='StarwarsAPI',
-        usage="Fetches resources from swapi.dev based on "
+        prog = 'StarwarsAPI',
+        usage = "Fetches resources from swapi.dev based on "
               "whatever arguements we provide",
-        description="It uses random number generator and uses request"
+        description = "It uses random number generator and uses request"
                     " library to get values from the swapi.dev",
     )
     # we are creating an option to provide count

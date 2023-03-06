@@ -6,12 +6,12 @@ import requests
 from typing import List, Dict, Union
 from requests import Response
 
-# logging configuration
-logging.basicConfig(
-    filename="utils/example.log",
-    encoding="utf-8",
-    level=logging.INFO
-)
+# # logging configuration
+# logging.basicConfig(
+#     filename="utils/example.log",
+#     encoding="utf-8",
+#     level=logging.INFO
+# )
 
 
 def mylogger(func):
@@ -31,6 +31,7 @@ def mylogger(func):
 @mylogger
 def hit_url(url: str) -> Response:
     response = requests.get(url)
+
     if response.status_code != 200:
         response.raise_for_status()
     else:

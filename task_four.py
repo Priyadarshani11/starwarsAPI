@@ -14,7 +14,7 @@ For example - "A new hope" movie has following resource endpoints -
 from resources.films import Film   # resource model
 from models.datamodels.films import film # pydantic model
 from models.datamodels.characters import Character_ # pydantic model
-from models.datamodels.planets import Planet_
+from models.datamodels.planets import Planet_ # resorce model
 from models.datamodels.vehicles import  Vehicle_
 from models.datamodels.starships import Starship_
 from models.datamodels.species import Species_

@@ -1,7 +1,8 @@
 
 from multiprocessing.pool import ThreadPool
-from resources.films import Film   # resource model
-from models.datamodels.films import film # pydantic model
+
+from resources.films import Film          # resource model
+from models.datamodels.films import film  # pydantic model
 from models.datamodels.characters import Character_
 from models.datamodels.planets import Planet_
 from models.datamodels.vehicles import  Vehicle_

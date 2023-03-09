@@ -1,20 +1,10 @@
-"""
-TODO
-1. Pull data for the first movie ("A New Hope") and save in DB.
-2. Replace the data for each endpoint listed in the JSON object and insert
-that data into database table
-For example - "A new hope" movie has following resource endpoints -
-- characters 15
-- planets  7
-- starships   10
-- vehicles  5
-- species  40
-"""
-# changes by first employee
-from resources.films import Film   # resource model
-from models.datamodels.films import film # pydantic model
-from models.datamodels.characters import Character_ # pydantic model
-from models.datamodels.planets import Planet_        # pydantic model
+
+from multiprocessing.pool import ThreadPool
+
+from resources.films import Film          # resource model
+from models.datamodels.films import film  # pydantic model
+from models.datamodels.characters import Character_
+from models.datamodels.planets import Planet_
 from models.datamodels.vehicles import  Vehicle_
 from models.datamodels.starships import Starship_
 from models.datamodels.species import Species_
@@ -22,11 +12,6 @@ from utils.fetch_data import hit_url
 from dal.db_conn_helper import get_db_conn
 from dal.dml import insert_resource
 from utils.timing import timeit
-
-
-
-data = Film().get_sample_data(id_=1)
-film_data = film(**data)
 
 @timeit
 def insert_film_data():
@@ -62,17 +47,15 @@ def insert_film_data():
 @timeit
 def insert_char_data():
 
-    data = film_data.characters
-    for i in data:
-        response = hit_url(i)
-        response = response.json()
-
+    data_= film_data.characters
+    pool = ThreadPool(len(data_))
+    results = pool.map(hit_url, data_)
+    for i in results:
+        response = i.json()
         char_data = Character_(**response)
 
         # create DB connection
-
         conn = get_db_conn()
-
         char_columns = [
             "name",
             "height",
@@ -83,7 +66,6 @@ def insert_char_data():
             "birth_year",
             "gender",
             "homeworld",
-
         ]
 
         char_values = [
@@ -106,13 +88,14 @@ def insert_char_data():
 
 def insert_planet_data():
 
-    data = film_data.planets
-    for i in data:
-        response = hit_url(i)
-        response = response.json()
-
+    data_ = film_data.planets
+    pool = ThreadPool(len(data_))
+    results = pool.map(hit_url, data_)
+    for i in results:
+        response = i.json()
         planet_data = Planet_(**response)
-            # create DB connection
+
+        # create DB connection
 
         conn = get_db_conn()
 
@@ -148,10 +131,10 @@ def insert_planet_data():
 def insert_vehicle_data():
 
     data = film_data.vehicles
-    for i in data:
-        response = hit_url(i)
-        response = response.json()
-
+    pool = ThreadPool(len(data))
+    results = pool.map(hit_url, data)
+    for i in results:
+        response = i.json()
         vehicle_data =Vehicle_(**response)
 
         # create DB connection
@@ -191,12 +174,13 @@ def insert_vehicle_data():
         )
 def insert_starship_data():
 
-    data = film_data.starships
-    for i in data:
-        response = hit_url(i)
-        response = response.json()
-
+    data_ = film_data.starships
+    pool = ThreadPool(len(data_))
+    results = pool.map(hit_url, data_)
+    for i in results:
+        response = i.json()
         starship_data = Starship_(**response)
+
         # create DB connection
 
         conn = get_db_conn()
@@ -241,11 +225,11 @@ def insert_starship_data():
 
 def insert_species_data():
 
-    data = film_data.species
-    for i in data:
-        response = hit_url(i)
-        response = response.json()
-
+    data_ = film_data.species
+    pool = ThreadPool(len(data_))
+    results = pool.map(hit_url, data_)
+    for i in results:
+        response = i.json()
         species_data = Species_(**response)
 
         # create DB connection
@@ -281,21 +265,15 @@ def insert_species_data():
         )
 
 
-if __name__ == "__main__":
-     insert_char_data()
-     insert_planet_data()
-     insert_vehicle_data()
-     insert_starship_data()
-     insert_species_data()
 
 
+if __name__=="__main__":
 
+    data = Film().get_sample_data(id_=1)
+    film_data = film(**data)
 
-
-
-
-
-
-
-
-
+    insert_char_data()
+    insert_planet_data()
+    insert_vehicle_data()
+    insert_starship_data()
+    insert_species_data()

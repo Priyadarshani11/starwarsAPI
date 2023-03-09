@@ -283,10 +283,10 @@ def insert_species_data():
 
 if __name__ == "__main__":
      insert_char_data()
-    # insert_planet_data()
-    # insert_vehicle_data()
-    # insert_starship_data()
-    # insert_species_data()
+     insert_planet_data()
+     insert_vehicle_data()
+     insert_starship_data()
+     insert_species_data()
 
 
 

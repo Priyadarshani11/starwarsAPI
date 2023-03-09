@@ -287,18 +287,7 @@ if __name__ == "__main__":
      insert_vehicle_data()
      insert_starship_data()
      insert_species_data()
-<<<<<<< HEAD
 
-
-
-
-
-
-
-
-
-=======
->>>>>>> 051f2f705c7cc3b4e79329297b2927746f4ef09d
 
 
 
